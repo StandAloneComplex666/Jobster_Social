@@ -1,25 +1,24 @@
 CREATE TABLE `Company` (
-    `cid` VARCHAR(10) NOT NULL,
     `cname` VARCHAR(45) NOT NULL,
+    `cemail` VARCHAR(10) NOT NULL,
     `clocation` VARCHAR(45) NOT NULL,
     `cphone` VARCHAR(12) NOT NULL,
     `cindusty` VARCHAR(45) NULL,
     `cdescription` VARCHAR(200) NULL,
-    PRIMARY KEY (`cid`)
+    PRIMARY KEY (`cname`)
 );
 
 CREATE TABLE `Student` (
-    `sid` VARCHAR(10) NOT NULL,
+    `semail` VARCHAR(20) NOT NULL,
     `skey` VARCHAR(16) NOT NULL,
     `sphone` VARCHAR(12) NOT NULL,
     `sfirstname` VARCHAR(20) NOT NULL,
     `slastname` VARCHAR(20) NOT NULL,
-    `semail` VARCHAR(40)  NULL,
     `suniv` VARCHAR(40)  NULL,
     `smajor` VARCHAR(5)  NULL,
     `sgpa` VARCHAR(5)  NULL,
     `sresume` VARCHAR(40)  NULL,
-    PRIMARY KEY (`sid`)
+    PRIMARY KEY (`semail`)
 );
 
 CREATE TABLE `JobAnnouncement` (
@@ -35,48 +34,48 @@ CREATE TABLE `JobAnnouncement` (
 );
 
 CREATE TABLE `CompanyPostJob` (
-    `cid` VARCHAR(10) NOT NULL,
+    `cname` VARCHAR(10) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`cid`,`jid`),
-    FOREIGN KEY (`cid`)
-        REFERENCES `Company`(`cid`),
+    PRIMARY KEY (`cname`,`jid`),
+    FOREIGN KEY (`cname`)
+        REFERENCES `Company`(`cname`),
     FOREIGN KEY (`jid`)
         REFERENCES `JobAnnouncement`(`jid`)   
 );
 
 CREATE TABLE `StudentFollowCompany` (
-    `sid` VARCHAR(10) NOT NULL,
-    `cid` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`sid`,`cid`),
-    FOREIGN key (`sid`)
-    	REFERENCES `Student` (`sid`),
-    FOREIGN KEY (`cid`)
-        REFERENCES `Company`(`cid`)
+    `semail` VARCHAR(10) NOT NULL,
+    `cname` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`semail`,`cname`),
+    FOREIGN key (`semail`)
+    	REFERENCES `Student` (`semail`),
+    FOREIGN KEY (`cname`)
+        REFERENCES `Company`(`cname`)
 );
 
 
 CREATE TABLE `StudentApplyJob` (
-    `sid` VARCHAR(10) NOT NULL,
+    `semail` VARCHAR(10) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
-    `cid` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`sid`,`jid`,`cid`),
-    FOREIGN key (`sid`)
-        REFERENCES `Student` (`sid`),
-    FOREIGN KEY (`cid`)
-        REFERENCES `Company`(`cid`),
+    `cname` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`semail`,`jid`,`cname`),
+    FOREIGN key (`semail`)
+        REFERENCES `Student` (`semail`),
+    FOREIGN KEY (`cname`)
+        REFERENCES `Company`(`cname`),
     FOREIGN KEY (`jid`)
         REFERENCES `JobAnnouncement`(`jid`)
 );
 
 CREATE TABLE `StudentFriends` (
-    `sidsend` VARCHAR(10) NOT NULL,
-    `sidreceive` VARCHAR(10) NOT NULL,
+    `semailsend` VARCHAR(10) NOT NULL,
+    `semailreceive` VARCHAR(10) NOT NULL,
     `status` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`sidsend`,`sidreceive`),
-    FOREIGN key (`sidsend`)
-        REFERENCES `Student` (`sid`),
-    FOREIGN key (`sidreceive`)
-        REFERENCES `Student` (`sid`)
+    PRIMARY KEY (`semailsend`,`semailreceive`),
+    FOREIGN key (`semailsend`)
+        REFERENCES `Student` (`semail`),
+    FOREIGN key (`semailreceive`)
+        REFERENCES `Student` (`semail`)
 );
 
 
