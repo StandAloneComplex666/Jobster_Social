@@ -1,5 +1,6 @@
 CREATE TABLE `Company` (
     `cname` VARCHAR(45) NOT NULL,
+    `ckey` VARCHAR(45) NOT NULL,
     `cemail` VARCHAR(10) NOT NULL,
     `clocation` VARCHAR(45) NOT NULL,
     `cphone` VARCHAR(12) NOT NULL,
