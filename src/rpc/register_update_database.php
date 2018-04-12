@@ -15,6 +15,7 @@ $user_type = $_POST['usertype']
         $sresume = $_POST['sresume'];
         $sql_update = "INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
 					   VALUES (`$semail`, `$skey`, `$sphone`, `$sfirstname`, `$slastname`, `$suniversity`, `$smajor`, `$sgpa`, `$sresume`)";
+        $sql_check_update = "select semail from Student where semail = '$semail';";
     }
     elseif ($user_type == 'company') {
         $cname = $_POST['cname'];
@@ -26,6 +27,7 @@ $user_type = $_POST['usertype']
         $cdescription = $_POST['cdescription'];
         $sql_update = "INSERT INTO `Company` (`cname`, `ckey`, `cemail`, `clocation`, `cphone`, `cindusty`, `cdescription`)
 					   VALUES (`$cname`, `$ckey`, `$cemail`, `$clocation`, `$cphone`, `$cindusty`, `$cdescription`);";
+        $sql_check_update = "select cname from Company where cname = '$cname';";
 
 	}
 
@@ -42,7 +44,18 @@ $user_type = $_POST['usertype']
     }
 
     //send query of update new user to backend database.
-    $double_check  = mysqli_query($conn, $sql_update);
+    $update  = mysqli_query($conn, $sql_update);
+    $check_update = mysqli_query($conn, $sql_check_update);
+    if ($check_update->num_rows > 0)
+    {
+        $response = True;
+        echo json_encode($response);
+    }
+    else:
+    {
+        $response = False;
+        echo json_encode($response);
+    }
     $conn->close();
 
 ?>
