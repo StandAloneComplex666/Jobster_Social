@@ -38,4 +38,5 @@ else
     echo "You can register with this username!";
     $response = True;
 }
+$conn->close();
 ?>
