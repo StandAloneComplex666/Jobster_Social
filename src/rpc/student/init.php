@@ -1,0 +1,87 @@
+<?php
+
+$semail = $_COOKIE['semail'];
+
+//initial classes for feedback to frontend.
+class personal_info{
+    public $semail;
+    public $skey;
+    public $sphone;
+    public $sfirstname;
+    public $slastname;
+    public $suniversity;
+    public $smajor;
+    public $sgpa;
+    public $sresume;
+}
+
+function Build_Personal_Info($row)
+{
+    $personalInfo = new personal_info();
+    $personalInfo->seamil = $row['semail'];
+    $personalInfo->skey = $row['skey'];
+    $personalInfo->sphone = $row['sphone'];
+    $personalInfo->sfirstname = $row['sfirstname'];
+    $personalInfo->slastname = $row['slastname'];
+    $personalInfo->suniversity = $row['suniversity'];
+    $personalInfo->smajor = $row['smajor'];
+    $personalInfo->sgpa = $row['sgpa'];
+    $personalInfo->sresume = $row['sresume'];
+    return $personalInfo;
+}
+
+//the parameters that used for connecting to database.
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "jobster";
+
+//create new connection and check if it is connected successfully.
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
+}
+
+//query personal infomation and the company that student has followed from backend database.
+$sql_personal_info = "select * from Student where semail = '$semail';";
+$result_personal_info = mysqli_query($conn, $sql_personal_info);
+
+if  ($result_personal_info->num_rows > 0){
+    while ($row = $result_personal_info->fetch_assoc()){
+        $info = Build_Personal_Info($row);
+        array_push($response, $info);
+        }
+    //echo json_encode($response_personal_info);
+}
+else{
+    $flag_personal_info = 0;
+}
+
+$sql_company_followed_by = "select cname  from  StudentFollowCompany where semail = '$semail';";
+$result_company_followed_by = mysqli_query($conn, $sql_company_followed_by);
+
+if  ($result_company_followed_by->num_rows > 0){
+    while ($row = $result_company_followed_by->fetch_assoc()){
+        $info = Build_Personal_Info($row);
+        array_push($response, $info);
+    }
+    //echo json_encode($response_personal_info);
+}
+else{
+    $flag_company_followed_by = 0;
+}
+
+//response to frontend.
+if ($flag_company_followed_by ==0 and $flag_personal_info ==0){
+    echo "404 not found...";
+}
+elseif($flag_company_followed_by ==0)
+{
+    echo json_encode($response)."& no company followed by this guy";
+}
+else
+{
+    echo json_encode($response);
+}
+$conn->close();
+?>
