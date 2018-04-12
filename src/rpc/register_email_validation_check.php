@@ -32,11 +32,13 @@ if ($double_check->num_rows > 0)
 {
     echo "This username has been occupied. Please choose another one!";
     $response = False;
+    echo json_encode($response);
 }
 else
 {
     echo "You can register with this username!";
     $response = True;
+    echo json_encode($response);
 }
 $conn->close();
 ?>
