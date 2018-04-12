@@ -15,7 +15,7 @@ CREATE TABLE `Student` (
     `sphone` VARCHAR(12) NOT NULL,
     `sfirstname` VARCHAR(20) NOT NULL,
     `slastname` VARCHAR(20) NOT NULL,
-    `suniv` VARCHAR(40)  NULL,
+    `suniversity` VARCHAR(40)  NULL,
     `smajor` VARCHAR(5)  NULL,
     `sgpa` VARCHAR(5)  NULL,
     `sresume` VARCHAR(40)  NULL,
