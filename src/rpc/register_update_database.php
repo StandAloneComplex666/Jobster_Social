@@ -43,7 +43,7 @@ $user_type = $_POST['usertype']
         die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
     }
 
-    //send query of update new user to backend database.
+    //send query of update new user to backend database and check if it succeeded.
     $update  = mysqli_query($conn, $sql_update);
     $check_update = mysqli_query($conn, $sql_check_update);
     if ($check_update->num_rows > 0)
