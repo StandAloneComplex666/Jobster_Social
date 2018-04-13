@@ -1,8 +1,31 @@
 <?php
 //login page,check if the username and keywords are valid.
+/*
 $username = $_POST['username'];
-$keywords = $_POST['keywords'];
+$passwords = $_POST['psaswords'];
 $user_type = $_POST['usertype'];
+*/
+
+//test data:
+//all correct
+$username = 'cz1522@nyu.edu';
+$passwords = '12345678';
+$usertype = 'student';
+
+//wrong username
+//$username = 'cz1523@nyu.edu';
+//$passwords = '12345678';
+//$usertype = 'student';
+
+//wrong password
+//$username = 'cz1523@nyu.edu';
+//$passwords = '1234567';
+//$usertype = 'student';
+
+//wrong usertype
+//$username = 'cz1523@nyu.edu';
+//$passwords = '1234567';
+//$usertype = 'company';
 
 if ($user_type == 'student') {
     $sql_check_username_exist = "select semail from Student where semail = '$username'";
