@@ -15,7 +15,7 @@ $user_type = $_POST['usertype']
         $sresume = $_POST['sresume'];
         $sql_update = "INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
 					   VALUES (`$semail`, `$skey`, `$sphone`, `$sfirstname`, `$slastname`, `$suniversity`, `$smajor`, `$sgpa`, `$sresume`)";
-        $sql_check_update = "select semail from Student where semail = '$semail';";
+        //$sql_check_update = "select semail from Student where semail = '$semail';";
     }
     elseif ($user_type == 'company') {
         $cname = $_POST['cname'];
@@ -27,33 +27,34 @@ $user_type = $_POST['usertype']
         $cdescription = $_POST['cdescription'];
         $sql_update = "INSERT INTO `Company` (`cname`, `ckey`, `cemail`, `clocation`, `cphone`, `cindusty`, `cdescription`)
 					   VALUES (`$cname`, `$ckey`, `$cemail`, `$clocation`, `$cphone`, `$cindusty`, `$cdescription`);";
-        $sql_check_update = "select cname from Company where cname = '$cname';";
+        //$sql_check_update = "select cname from Company where cname = '$cname';";
 
 	}
 
     //the parameters that used for connecting to database.
     $servername = "localhost";
-    $username = "root";
+    $dbusername = "root";
     $password = "";
     $dbname = "jobster";
 
     //create new connection and check if it is connected successfully.
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $dbusername, $password, $dbname);
     if ($conn->connect_error) {
         die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
     }
 
     //send query of update new user to backend database and check if it succeeded.
-    $update  = mysqli_query($conn, $sql_update);
-    $check_update = mysqli_query($conn, $sql_check_update);
-    if ($check_update->num_rows > 0)
+
+    //$check_update = mysqli_query($conn, $sql_check_update);
+    if ($update  = mysqli_query($conn, $sql_update) == True)
     {
-        $response = True;
+        $response = "You have registered successfully!";
         echo json_encode($response);
     }
     else:
     {
-        $response = False;
+        header('HTTP/1.0 403 Forbidden');
+        $response = "ERROR: ".$update."<br>".$conn->error;
         echo json_encode($response);
     }
     $conn->close();
