@@ -79,37 +79,27 @@ CREATE TABLE `StudentFriends` (
     FOREIGN key (`semailreceive`)
         REFERENCES `Student` (`semail`)
 );
-/*
-Notification(csender, ssender,semail,jid)
-Primary key cender, ssender
-Jid reference jid in JobAnnouncement
-Semail, ssender reference semail in Student
-Csender reference cname in Company
-Message(messagesend, messagereceive, content)
-Primary key : messagesend, messagereceive
-Foreign key : messagesend, messagereceive reference semail in Student
 
-*/
 CREATE TABLE `Notification` (
-    `csend` VARCHAR(45) NOT NULL,
-    `ssend` VARCHAR(20) NOT NULL,
-    `sreceive` VARCHAR(20) NOT NULL,
+    `companysend` VARCHAR(45) NOT NULL,
+    `semailsend` VARCHAR(20) NOT NULL,
+    `semailreceive` VARCHAR(20) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`csend`,`ssend`,`semail`,`jid`),
-    FOREIGN key (`csend`)
+    PRIMARY KEY (`companysend`,`semailsend`,`semailreceive`,`jid`),
+    FOREIGN key (`companysend`)
         REFERENCES `Company` (`cname`),
-    FOREIGN key (`ssend`,`sreceive`)
+    FOREIGN key (`semailsend`,`semailreceive`)
         REFERENCES `Student` (`semail`),
     FOREIGN KEY (`jid`)
         REFERENCES `JobAnnouncement`(`jid`)
 );
 
-CREATE TABLE `MESSAGE` (
-    `messagesend` VARCHAR(20) NOT NULL,
-    `messagereceive` VARCHAR(20) NOT NULL,
+CREATE TABLE `Message` (
+    `semailsend` VARCHAR(20) NOT NULL,
+    `semailreceive` VARCHAR(20) NOT NULL,
     `content` VARCHAR(200) NOT NULL,
-    PRIMARY KEY (`messagesend`, `messagereceive`)
-    FOREIGN KEY (`messagesend`, `messagereceive`)
+    PRIMARY KEY (`semailsend`, `semailreceive`)
+    FOREIGN KEY (`semailsend`, `semailreceive`)
         REFERENCES `Student` (`semail`)
 );
 
