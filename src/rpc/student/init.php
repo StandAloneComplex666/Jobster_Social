@@ -15,7 +15,7 @@ class personal_info{
     public $sresume;
 }
 
-function Build_Personal_Info($row)
+function Build_personal_Info($row)
 {
     $personalInfo = new personal_info();
     $personalInfo->seamil = $row['semail'];
@@ -30,6 +30,29 @@ function Build_Personal_Info($row)
     return $personalInfo;
 }
 
+class company_info{
+    public $cname;
+    public $ckey;
+    public $cphone;
+    public $cemail;
+    public $cindustry;
+    public $clocation;
+    public $cdescription;
+}
+
+function Build_Company_Info($row)
+{
+    $companyInfo = new company_info();
+    $companyInfo->ceamil = $row['cemail'];
+    $companyInfo->ckey = $row['ckey'];
+    $companyInfo->cphone = $row['cphone'];
+    $companyInfo->cname = $row['cname'];
+    $companyInfo->cindustry = $row['cindustry'];
+    $companyInfo->clocation = $row['clocation'];
+    $companyInfo->cdescription = $row['cdescription'];
+    return $company_info;
+}
+
 //the parameters that used for connecting to database.
 $servername = "localhost";
 $username = "root";
@@ -42,13 +65,13 @@ if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
 
-//query personal infomation and the company that student has followed from backend database.
+//query personal infomation and the personal that student has followed from backend database.
 $sql_personal_info = "select * from Student where semail = '$semail';";
 $result_personal_info = mysqli_query($conn, $sql_personal_info);
 
 if  ($result_personal_info->num_rows > 0){
     while ($row = $result_personal_info->fetch_assoc()){
-        $info = Build_Personal_Info($row);
+        $info = Build_personal_Info($row);
         array_push($response, $info);
         }
     //echo json_encode($response_personal_info);
@@ -57,12 +80,12 @@ else{
     $flag_personal_info = 0;
 }
 
-$sql_company_followed_by = "select cname  from  StudentFollowCompany where semail = '$semail';";
+$sql_company_followed_by = "select cname  from  StudentFollowcompany where semail = '$semail';";
 $result_company_followed_by = mysqli_query($conn, $sql_company_followed_by);
 
 if  ($result_company_followed_by->num_rows > 0){
     while ($row = $result_company_followed_by->fetch_assoc()){
-        $info = Build_Personal_Info($row);
+        $info = Build_Company_Info($row);
         array_push($response, $info);
     }
     //echo json_encode($response_personal_info);
