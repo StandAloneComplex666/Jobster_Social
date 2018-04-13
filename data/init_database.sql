@@ -81,11 +81,12 @@ CREATE TABLE `StudentFriends` (
 );
 
 CREATE TABLE `Notification` (
-    `companysend` VARCHAR(45) NOT NULL,
-    `semailsend` VARCHAR(20) NOT NULL,
-    `semailreceive` VARCHAR(20) NOT NULL,
-    `jid` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`companysend`,`semailsend`,`semailreceive`,`jid`),
+    `nid` VARCHAR(10) NOT NULL,
+    `companysend` VARCHAR(45) NULL,
+    `semailsend` VARCHAR(20) NULL,
+    `semailreceive` VARCHAR(20)  NULL,
+    `jid` VARCHAR(10)  NULL,
+    PRIMARY KEY (`nid`),
     FOREIGN key (`companysend`)
         REFERENCES `Company` (`cname`),
     FOREIGN key (`semailsend`,`semailreceive`)
