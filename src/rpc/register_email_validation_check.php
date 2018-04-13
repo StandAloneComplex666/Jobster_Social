@@ -31,13 +31,13 @@ $double_check  = mysqli_query($conn, $sql_check_double_email);
 if ($double_check->num_rows > 0)
 {
     //echo "This username has been occupied. Please choose another one!";
-    $response = False;
-    echo json_encode($response);
+    header('HTTP/1.0 403 Forbidden');
+    die('This username has been occupied!');
 }
 else
 {
     //echo "You can register with this username!";
-    $response = True;
+    $response = "You can register with this username!";
     echo json_encode($response);
 }
 $conn->close();
