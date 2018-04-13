@@ -31,14 +31,17 @@
     	if ($result_keywords_match->num_rows > 0)
         {
             $response = "Login successfully!";
+            echo json_encode($response);
         }
         else
         {
     	    $response = "The keyword is not correct!";
+            echo json_encode($response);
         }
     }
     else{
     	$response = "The username has not been registered.";
+        echo json_encode($response);
     }
 
 
