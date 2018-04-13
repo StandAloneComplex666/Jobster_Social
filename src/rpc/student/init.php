@@ -1,6 +1,6 @@
 <?php
 
-$semail = $_COOKIE['semail'];
+$semail = $_POST['semail'];
 
 //initial classes for feedback to frontend.
 class personal_info{
