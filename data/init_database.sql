@@ -59,6 +59,7 @@ CREATE TABLE `StudentApplyJob` (
     `semail` VARCHAR(10) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
     `cname` VARCHAR(10) NOT NULL,
+    `status` VARCHAR(10) NULL,
     PRIMARY KEY (`semail`,`jid`,`cname`),
     FOREIGN key (`semail`)
         REFERENCES `Student` (`semail`),
