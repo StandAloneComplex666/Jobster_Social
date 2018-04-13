@@ -11,26 +11,22 @@ class company_info{
     public $ckey;
     public $cphone;
     public $cemail;
-    public $cindusty;
+    public $cindustry;
     public $clocation;
     public $cdescription;
-    public $sgpa;
-    public $sresume;
 }
 
-function Build_Personal_Info($row)
+function Build_Company_Info($row)
 {
-    $personalInfo = new personal_info();
-    $personalInfo->seamil = $row['semail'];
-    $personalInfo->skey = $row['skey'];
-    $personalInfo->sphone = $row['sphone'];
-    $personalInfo->sfirstname = $row['sfirstname'];
-    $personalInfo->slastname = $row['slastname'];
-    $personalInfo->suniversity = $row['suniversity'];
-    $personalInfo->smajor = $row['smajor'];
-    $personalInfo->sgpa = $row['sgpa'];
-    $personalInfo->sresume = $row['sresume'];
-    return $personalInfo;
+    $personalInfo = new company_info();
+    $personalInfo->ceamil = $row['cemail'];
+    $personalInfo->ckey = $row['ckey'];
+    $personalInfo->cphone = $row['cphone'];
+    $personalInfo->cname = $row['cname'];
+    $personalInfo->cindustry = $row['cindustry'];
+    $personalInfo->clocation = $row['clocation'];
+    $personalInfo->cdescription = $row['cdescription'];
+    return $company_info;
 }
 
 //get parameter from frontend.
@@ -54,10 +50,10 @@ $result_company_search = mysqli_query($conn, $sql_company_search);
 
 if  ($result_company_search->num_rows > 0){
     while ($row = $result_company_search->fetch_assoc()){
-        $info = Build_Personal_Info($row);
+        $info = Build_Company_Info($row);
         array_push($response, $info);
     }
-    echo json_encode($response_personal_info);
+    echo json_encode($response);
 }
 else{
     echo "[]";
