@@ -18,14 +18,14 @@ class company_info{
 
 function Build_Company_Info($row)
 {
-    $personalInfo = new company_info();
-    $personalInfo->ceamil = $row['cemail'];
-    $personalInfo->ckey = $row['ckey'];
-    $personalInfo->cphone = $row['cphone'];
-    $personalInfo->cname = $row['cname'];
-    $personalInfo->cindustry = $row['cindustry'];
-    $personalInfo->clocation = $row['clocation'];
-    $personalInfo->cdescription = $row['cdescription'];
+    $companyInfo = new company_info();
+    $companyInfo->ceamil = $row['cemail'];
+    $companyInfo->ckey = $row['ckey'];
+    $companyInfo->cphone = $row['cphone'];
+    $companyInfo->cname = $row['cname'];
+    $companyInfo->cindustry = $row['cindustry'];
+    $companyInfo->clocation = $row['clocation'];
+    $companyInfo->cdescription = $row['cdescription'];
     return $company_info;
 }
 
