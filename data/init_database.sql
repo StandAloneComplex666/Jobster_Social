@@ -37,6 +37,7 @@ CREATE TABLE `JobAnnouncement` (
 CREATE TABLE `CompanyPostJob` (
     `cname` VARCHAR(45) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
+    `posttime` date,
     PRIMARY KEY (`cname`,`jid`),
     FOREIGN KEY (`cname`)
         REFERENCES `Company`(`cname`),
@@ -60,6 +61,7 @@ CREATE TABLE `StudentApplyJob` (
     `jid` VARCHAR(10) NOT NULL,
     `cname` VARCHAR(45) NOT NULL,
     `status` VARCHAR(10) NULL,
+    `applytime` date,
     PRIMARY KEY (`semail`,`jid`,`cname`),
     FOREIGN key (`semail`)
         REFERENCES `Student` (`semail`),
@@ -73,6 +75,7 @@ CREATE TABLE `StudentFriends` (
     `semailsend` VARCHAR(20) NOT NULL,
     `semailreceive` VARCHAR(20) NOT NULL,
     `status` VARCHAR(10) NOT NULL,
+    `sendtime` date,
     PRIMARY KEY (`semailsend`,`semailreceive`),
     FOREIGN key (`semailsend`)
         REFERENCES `Student` (`semail`),
@@ -86,6 +89,7 @@ CREATE TABLE `Notification` (
     `semailsend` VARCHAR(20) NULL,
     `semailreceive` VARCHAR(20)  NULL,
     `jid` VARCHAR(10)  NULL,
+    `pushtime` date,
     PRIMARY KEY (`nid`),
     FOREIGN key (`companysend`)
         REFERENCES `Company` (`cname`),
@@ -99,6 +103,7 @@ CREATE TABLE `Message` (
     `semailsend` VARCHAR(20) NOT NULL,
     `semailreceive` VARCHAR(20) NOT NULL,
     `content` VARCHAR(200) NOT NULL,
+    `sendtime` date,
     PRIMARY KEY (`semailsend`, `semailreceive`)
     FOREIGN KEY (`semailsend`, `semailreceive`)
         REFERENCES `Student` (`semail`)
