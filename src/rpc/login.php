@@ -1,16 +1,16 @@
 <?php
 //login page,check if the username and keywords are valid.
-/*
+
 $username = $_POST['username'];
 $passwords = $_POST['psaswords'];
 $user_type = $_POST['usertype'];
-*/
+
 
 //test data:
 //all correct
-$username = 'cz1522@nyu.edu';
-$passwords = '12345678';
-$usertype = 'student';
+//$username = 'cz1522@nyu.edu';
+//$passwords = '12345678';
+//$user_type = 'student';
 
 //wrong username
 //$username = 'cz1523@nyu.edu';
@@ -18,12 +18,12 @@ $usertype = 'student';
 //$usertype = 'student';
 
 //wrong password
-//$username = 'cz1523@nyu.edu';
+//$username = 'cz1522@nyu.edu';
 //$passwords = '1234567';
 //$usertype = 'student';
 
 //wrong usertype
-//$username = 'cz1523@nyu.edu';
+//$username = 'cz1522@nyu.edu';
 //$passwords = '1234567';
 //$usertype = 'company';
 
