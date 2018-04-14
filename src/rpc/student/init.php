@@ -50,17 +50,41 @@ function Build_Company_Info($row)
     $companyInfo->cindustry = $row['cindustry'];
     $companyInfo->clocation = $row['clocation'];
     $companyInfo->cdescription = $row['cdescription'];
-    return $company_info;
+    return $companyInfo;
 }
+
+class notification_info
+{
+    public $nid;
+    public $companysend;
+    public $semailsend;
+    public $semailreceive;
+    public $jid;
+    public $pushtime;
+
+}
+
+function Build_Notification_Info($row)
+{
+    $notificationInfo = new notification_info();
+    $notificationInfo -> nid = $row['cemail'];
+    $notificationInfo -> companysend = $row['companysend'];
+    $notificationInfo -> semailsend = $row['semailsend'];
+    $notificationInfo -> semailreceive = $row['semailreceive'];
+    $notificationInfo -> jid = $row['jid'];
+    $notificationInfo -> pushtime = $row['pushtime'];
+    return $notificationInfo;
+}
+
 
 //the parameters that used for connecting to database.
 $servername = "localhost";
-$username = "root";
+$dbusername = "root";
 $password = "";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
