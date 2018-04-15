@@ -42,8 +42,11 @@ else{
         echo json_encode($response);
     }
     else{
-        $response = "Your friend request has not been sent.";
+        //$response = "Your friend request has not been sent.";
         //echo $response;
-        echo json_encode($response);
+        //echo json_encode($response);
+        header('HTTP/1.0 403 Forbidden');
+        die("Your friend request has not been sent.");
+
     }
 }
