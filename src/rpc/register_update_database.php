@@ -59,10 +59,8 @@ $user_type = $_POST['usertype'];
         die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
     }
 
-    //send query of update new user to backend database and check if it succeeded.
-
     //$check_update = mysqli_query($conn, $sql_check_update);
-    if ($update  = mysqli_query($conn, $sql_update) == True)
+    if ($update = mysqli_query($conn, $sql_update) == True)
     {
         $response = "You have registered successfully!";
         //echo $response;
