@@ -61,6 +61,7 @@ class notification_info
     public $semailreceive;
     public $jid;
     public $pushtime;
+    public $status;
 
 }
 
@@ -73,6 +74,7 @@ function Build_Notification_Info($row)
     $notificationInfo -> semailreceive = $row['semailreceive'];
     $notificationInfo -> jid = $row['jid'];
     $notificationInfo -> pushtime = $row['pushtime'];
+    $notificationInfo -> status = $row['status'];
     return $notificationInfo;
 }
 
@@ -88,7 +90,18 @@ $conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
-
+//query pending student friend request
+$sql_pending_friend_request = "select * from StudentFriends where semailreceive = '$semail' and status = 'unviewed';";
+$result_pending_friend_request = mysqli_query($conn, $sql_pending_friend_request);
+if ($result_pending_friend_request->num_rows > 0){
+    while ($row = $result_pending_friend_request_>fetch_assoc()){
+        $info = Build_friend_request_Info($row);
+        array_push($response, $info);
+    }
+}
+else{
+    $flag_friend_request = 0;
+}
 //query personal infomation  from backend database.
 $sql_personal_info = "select * from Student where semail = '$semail';";
 $result_personal_info = mysqli_query($conn, $sql_personal_info);
@@ -105,8 +118,8 @@ else{
 }
 
 //query notifications of followed company and other students send from backend database.
-$sql_jobannouncement_from_followed = "Select * from notification where companysend in 
-(select cname  from  StudentFollowcompany where semail = '$semail') or emailreceive = '$semail';";
+$sql_jobannouncement_from_followed = "Select * from notification where (companysend in 
+(select cname  from  StudentFollowcompany where semail = '$semail') or emailreceive = '$semail') and status = 'unviewed';";
 
 $result_jobannouncement_from_followed = mysqli_query($conn, $sql_jobannouncement_from_followed);
 
@@ -122,13 +135,17 @@ else{
 }
 
 //response to frontend.
-if ($flag_jobannouncement_from_followed ==0 and $flag_personal_info ==0){
+if ($flag_jobannouncement_from_followed ==0 and $flag_personal_info ==0 and $flag_friend_request == 0){
     header('HTTP/1.0 403 Forbidden');
-    echo "personal information lossed.";
+    echo "nothing found.";
 }
 elseif($flag_jobannouncement_from_followed ==0)
 {
-    echo json_encode($response)."& no notifications";
+    echo json_encode($response)."& no notifications.";
+}
+elseif($flag_friend_request == 0)
+{
+    echo json_encode($response)."$ no friend requests.";
 }
 else
 {
