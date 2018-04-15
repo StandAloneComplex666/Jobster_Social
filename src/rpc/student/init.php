@@ -89,7 +89,7 @@ if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
 
-//query personal infomation and the personal that student has followed from backend database.
+//query personal infomation  from backend database.
 $sql_personal_info = "select * from Student where semail = '$semail';";
 $result_personal_info = mysqli_query($conn, $sql_personal_info);
 
@@ -104,27 +104,31 @@ else{
     $flag_personal_info = 0;
 }
 
-$sql_company_followed_by = "Select * from notification where cname in (select cname  from  StudentFollowcompany where semail = '$semail');";
-$result_company_followed_by = mysqli_query($conn, $sql_company_followed_by);
+//query notifications of followed company and other students send from backend database.
+$sql_jobannouncement_from_followed = "Select * from notification where companysend in 
+(select cname  from  StudentFollowcompany where semail = '$semail') or emailreceive = '$semail';";
 
-if  ($result_company_followed_by->num_rows > 0){
-    while ($row = $result_company_followed_by->fetch_assoc()){
+$result_jobannouncement_from_followed = mysqli_query($conn, $sql_jobannouncement_from_followed);
+
+if  ($result_jobannouncement_from_followed->num_rows > 0){
+    while ($row = $result_jobannouncement_from_followed->fetch_assoc()){
         $info = Build_Company_Info($row);
         array_push($response, $info);
     }
     //echo json_encode($response_personal_info);
 }
 else{
-    $flag_company_followed_by = 0;
+    $flag_jobannouncement_from_followed = 0;
 }
 
 //response to frontend.
-if ($flag_company_followed_by ==0 and $flag_personal_info ==0){
-    echo "404 not found...";
+if ($flag_jobannouncement_from_followed ==0 and $flag_personal_info ==0){
+    header('HTTP/1.0 403 Forbidden');
+    echo "personal information lossed.";
 }
-elseif($flag_company_followed_by ==0)
+elseif($flag_jobannouncement_from_followed ==0)
 {
-    echo json_encode($response)."& no company followed by this guy";
+    echo json_encode($response)."& no notifications";
 }
 else
 {
