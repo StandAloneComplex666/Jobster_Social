@@ -35,12 +35,12 @@ function Build_personal_Info($row)
 
 //the parameters that used for connecting to database.
 $servername = "localhost";
-$username = "root";
+$dbusername = "root";
 $password = "";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
@@ -62,7 +62,8 @@ $result_search_student = mysqli_query($conn, $sql_search_student);
         echo json_encode($response_personal_info);
     }
     else {
-        echo "[]";
+        header('HTTP/1.0 403 Forbidden');
+        die('Cannot find student that fit your keyword.');
     }
 $conn->close();
 ?>
