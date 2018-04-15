@@ -18,6 +18,20 @@ if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
 
+//get parameters from frontend.
+$semailsend = $_POST['semailsend'];
+$semailreceive = $_POST['semailreceive'];
+$content = $_POST['content'];
 
+//update the message to database.
+$sql_update_messge = "INSERT INTO message (`semailsend`, `semailreceive`, `content`, `sendtime`, `status`)
+VALUES  ('$semailsend', '$semailreceive', '$content', CURRENT_DATE, 'unviewed');";
+if (mysqli_query($conn, $sql_update_messge) == True){
+    echo "Your message to ".$semailreceive." has been sent.";
+}
+else{
+    header('HTTP/1.0 403 Forbidden');
+    echo "Database error:"."\"<br>\".$conn->error";
+}
 $conn->close();
 ?>
