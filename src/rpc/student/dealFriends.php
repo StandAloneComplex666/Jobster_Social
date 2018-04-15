@@ -33,7 +33,10 @@ elseif ($choice == "Denied"){
 $sql_update_friend_status = "DELETE FROM StudentFriends WHERE semailsend = '$send' and semailreceive = '$receive';";
 }
 else{
-    $response = "invalid value of choice.";
+    //$response = "invalid value of choice.";
     //echo $response;
-    echo json.encode($response);
+    //echo json.encode($response);
+    header('HTTP/1.0 403 Forbidden');
+    die('Invalid value of choice.');
+
 }
