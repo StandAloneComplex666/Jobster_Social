@@ -104,7 +104,7 @@ else{
     $flag_personal_info = 0;
 }
 
-$sql_company_followed_by = "select cname  from  StudentFollowcompany where semail = '$semail';";
+$sql_company_followed_by = "Select * from notification where cname in (select cname  from  StudentFollowcompany where semail = '$semail');";
 $result_company_followed_by = mysqli_query($conn, $sql_company_followed_by);
 
 if  ($result_company_followed_by->num_rows > 0){
