@@ -54,3 +54,5 @@ else{
     die('Invalid value of choice.');
 
 }
+$conn->close();
+?>
