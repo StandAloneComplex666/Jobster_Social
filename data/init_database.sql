@@ -93,7 +93,9 @@ CREATE TABLE `Notification` (
     PRIMARY KEY (`nid`),
     FOREIGN key (`companysend`)
         REFERENCES `Company` (`cname`),
-    FOREIGN key (`semailsend`,`semailreceive`)
+    FOREIGN key (`semailsend`)
+        REFERENCES `Student` (`semail`),
+    FOREIGN KEY (`semailreceive`)
         REFERENCES `Student` (`semail`),
     FOREIGN KEY (`jid`)
         REFERENCES `JobAnnouncement`(`jid`)
@@ -104,8 +106,10 @@ CREATE TABLE `Message` (
     `semailreceive` VARCHAR(20) NOT NULL,
     `content` VARCHAR(200) NOT NULL,
     `sendtime` date,
-    PRIMARY KEY (`semailsend`, `semailreceive`)
-    FOREIGN KEY (`semailsend`, `semailreceive`)
+    PRIMARY KEY (`semailsend`, `semailreceive`),
+    FOREIGN key (`semailsend`)
+        REFERENCES `Student` (`semail`),
+    FOREIGN KEY (`semailreceive`)
         REFERENCES `Student` (`semail`)
 );
 
