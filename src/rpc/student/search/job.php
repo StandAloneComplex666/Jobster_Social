@@ -28,7 +28,7 @@ function Build_Job_Info($row)
     $jobInfo->jreq_experience = $row['jreq_experience'];
     $jobInfo->jdescription = $row['jdescription'];
     $jobInfo->jlocation = $row['jlocation'];
-    return $job_info;
+    return $jobInfo;
 }
 
 //get parameter from frontend.
@@ -62,4 +62,5 @@ else{
     header('HTTP/1.0 403 Forbidden');
     die('Cannot find job fits your keyword.');
 }
+$conn->close();
 ?>
