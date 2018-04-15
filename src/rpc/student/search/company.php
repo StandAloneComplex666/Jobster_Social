@@ -26,7 +26,7 @@ function Build_Company_Info($row)
     $companyInfo->cindustry = $row['cindustry'];
     $companyInfo->clocation = $row['clocation'];
     $companyInfo->cdescription = $row['cdescription'];
-    return $company_info;
+    return $companyInfo;
 }
 
 //get parameter from frontend.
@@ -59,4 +59,5 @@ else{
     header('HTTP/1.0 403 Forbidden');
     die('Cannot find company fits your keyword.');
 }
+$conn->close();
 ?>
