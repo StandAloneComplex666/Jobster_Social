@@ -36,12 +36,12 @@ $keyword = $_POST['keyword'];
 
 //the parameters that used for connecting to database.
 $servername = "localhost";
-$username = "root";
+$dbusername = "root";
 $password = "";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
@@ -59,6 +59,7 @@ if  ($result_job_search->num_rows > 0){
     echo json_encode($response_job_info);
 }
 else{
-    echo "[]";
+    header('HTTP/1.0 403 Forbidden');
+    die('Cannot find job fits your keyword.');
 }
 ?>
