@@ -103,6 +103,7 @@ CREATE TABLE `Notification` (
 );
 
 CREATE TABLE `Message` (
+    `mid` VARCHAR(20) NOT NULL,
     `semailsend` VARCHAR(20) NOT NULL,
     `semailreceive` VARCHAR(20) NOT NULL,
     `content` VARCHAR(200) NOT NULL,
