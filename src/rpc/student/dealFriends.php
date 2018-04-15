@@ -27,10 +27,24 @@ $choice = $_POST['choice'];
 if ($choice == "Accepted"){
 $sql_update_friend_status = "UPDATE StudentFriends SET status = 'Accepted' where semailsend = '$send' 
 and semailreceive = '$receive';";
-mysqli
+    if (mysqli_query($conn, $sql_update_friend_status) == True ){
+        echo $receive."accepted your friend request.";
+    }
+    else{
+        header('HTTP/1.0 403 Forbidden');
+        echo "Database error:"."\"<br>\".$conn->error";
+    }
+
 }
 elseif ($choice == "Denied"){
 $sql_update_friend_status = "DELETE FROM StudentFriends WHERE semailsend = '$send' and semailreceive = '$receive';";
+    if (mysqli_query($conn, $sql_update_friend_status) == True){
+        echo $receive." denied your request.";
+    }
+    else{
+        header('HTTP/1.0 403 Forbidden');
+        echo "Database error:"."\"<br>\".$conn->error";
+    }
 }
 else{
     //$response = "invalid value of choice.";
