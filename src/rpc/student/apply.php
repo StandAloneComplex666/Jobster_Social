@@ -13,12 +13,12 @@ $jid = $_POST['jid'];
 
 //the parameters that used for connecting to database.
 $servername = "localhost";
-$username = "root";
+$dbusername = "root";
 $password = "";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
