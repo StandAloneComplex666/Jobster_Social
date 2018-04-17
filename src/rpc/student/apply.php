@@ -24,7 +24,8 @@ if ($conn->connect_error) {
 }
 
 //update application to the backend database.
-$sql_update_application = "INSERT INTO StudentApplyJob(`semail`, `jid`, `cname`, `status`, `applytime`) VALUES('$semail', '$jid', '$cname','unviewed', CURDATE());";
+$sql_update_application = "INSERT INTO StudentApplyJob(`semail`, `jid`, `cname`, `status`, `applytime`)
+ VALUES('$semail', '$jid', '$cname','unviewed', CURDATE());";
 mysqli_query($conn, $sql_update_application);
 
 //check if the application has been updated.
