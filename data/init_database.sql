@@ -102,7 +102,7 @@ CREATE TABLE `Notification` (
         REFERENCES `JobAnnouncement`(`jid`)
 );
 
-CREATE TABLE `Message` ( `mid` VARCHAR(20) NOT NULL,
+CREATE TABLE `Message` (
     `mid` VARCHAR(20) NOT NULL,
     `semailsend` VARCHAR(20) NOT NULL,
     `semailreceive` VARCHAR(20) NOT NULL,
