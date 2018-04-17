@@ -1,0 +1,38 @@
+@import "../../node_modules/antd/dist/antd.css";
+@import "Register.css";
+@import "Main.css";
+@import "Login.css";
+@import "Header.css";
+@import "ItemContainer.css";
+@import "UserInfo.css";
+@import "Home.css";
+@import "UserInfo.css";
+@import "FriendsList.css";
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  margin: 10px;
+  height: 30px;
+  float: left;
+}
+
+.App-header {
+  background-color: #283e4a;
+  height: 50px;
+  color: white;
+}
+
+.App-title {
+  font-size: 2.5em;
+  color: black;
+  padding-top: 10px;
+  float: left;
+}
+
+.App-intro {
+  font-size: large;
+}
+
