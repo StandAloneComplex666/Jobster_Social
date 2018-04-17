@@ -31,7 +31,7 @@ if (mysqli_query($conn, $sql_update_messge) == True){
 }
 else{
     header('HTTP/1.0 403 Forbidden');
-    echo "Database error:"."\"<br>\".$conn->error";
+    echo "Database error:"."<br>"."$conn->error";
 }
 $conn->close();
 ?>
