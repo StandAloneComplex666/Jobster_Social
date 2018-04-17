@@ -3,6 +3,16 @@
 $semail = $_POST['semail'];
 
 //initial classes for feedback to frontend.
+class class_response{
+    public $friend_request;
+    public $notification;
+    public $personal_info;
+    public function isEmpty()
+    {
+        return empty($this->friend_request) and empty($this->notification) and empty($this->personal_info);
+    }
+}
+
 class personal_info{
     public $semail;
     public $skey;
@@ -68,7 +78,7 @@ class notification_info
 function Build_Notification_Info($row)
 {
     $notificationInfo = new notification_info();
-    $notificationInfo -> nid = $row['cemail'];
+    $notificationInfo -> nid = $row['nid'];
     $notificationInfo -> companysend = $row['companysend'];
     $notificationInfo -> semailsend = $row['semailsend'];
     $notificationInfo -> semailreceive = $row['semailreceive'];
@@ -90,66 +100,61 @@ $conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
+
+//initialize a object of class 'response' and temp array to feed the result back to frontend.
+$response = new class_response();
+$temp_array = array();
+
 //query pending student friend request
 $sql_pending_friend_request = "select * from StudentFriends where semailreceive = '$semail' and status = 'unviewed';";
 $result_pending_friend_request = mysqli_query($conn, $sql_pending_friend_request);
 if ($result_pending_friend_request->num_rows > 0){
+    unset($temp_array);
     while ($row = $result_pending_friend_request_>fetch_assoc()){
         $info = Build_friend_request_Info($row);
-        array_push($response, $info);
+        array_push($temp_array, $info);
     }
+    $response->friend_requset = $temp_array;
 }
-else{
-    $flag_friend_request = 0;
-}
+
 //query personal infomation  from backend database.
 $sql_personal_info = "select * from Student where semail = '$semail';";
 $result_personal_info = mysqli_query($conn, $sql_personal_info);
 
 if  ($result_personal_info->num_rows > 0){
+    unset($temp_array);
     while ($row = $result_personal_info->fetch_assoc()){
         $info = Build_personal_Info($row);
-        array_push($response, $info);
+        array_push($temp_array, $info);
         }
+    $response-> personal_info = $temp_array;
     //echo json_encode($response_personal_info);
-}
-else{
-    $flag_personal_info = 0;
 }
 
 //query notifications of followed company and other students send from backend database.
-$sql_jobannouncement_from_followed = "Select * from notification where (companysend in 
-(select cname  from  StudentFollowcompany where semail = '$semail') or emailreceive = '$semail') and status = 'unviewed';";
+$sql_notification_unviewed = "Select * from notification where semailreceive = '$semail' and status = 'unviewed';";
 
-$result_jobannouncement_from_followed = mysqli_query($conn, $sql_jobannouncement_from_followed);
+$result_notification_unviewed = mysqli_query($conn, $sql_notification_unviewed);
 
-if  ($result_jobannouncement_from_followed->num_rows > 0){
-    while ($row = $result_jobannouncement_from_followed->fetch_assoc()){
+if  ($result_notification_unviewed->num_rows > 0){
+    unset($temp_array);
+    while ($row = $result_notification_unviewed->fetch_assoc()){
         $info = Build_Company_Info($row);
-        array_push($response, $info);
+        array_push($temp_array, $info);
     }
+    $response->notification = $temp_array;
     //echo json_encode($response_personal_info);
-}
-else{
-    $flag_jobannouncement_from_followed = 0;
 }
 
 //response to frontend.
-if ($flag_jobannouncement_from_followed ==0 and $flag_personal_info ==0 and $flag_friend_request == 0){
+if ($response->isEmpty()){
     header('HTTP/1.0 403 Forbidden');
     echo "nothing found.";
-}
-elseif($flag_jobannouncement_from_followed ==0)
-{
-    echo json_encode($response)."& no notifications.";
-}
-elseif($flag_friend_request == 0)
-{
-    echo json_encode($response)."$ no friend requests.";
 }
 else
 {
     echo json_encode($response);
 }
+
 $conn->close();
 ?>
