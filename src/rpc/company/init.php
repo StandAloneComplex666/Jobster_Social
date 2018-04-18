@@ -6,6 +6,23 @@
  * Time: 23:01
  */
 //initial classes for feedback to frontend.
+class student_application{
+    public $semail;
+    public $cname;
+    public $jid;
+    public $status;
+    public $applytime;
+}
+
+function Build_Student_Application_Info($row){
+    $studentapplicationIfo = new student_application();
+    $studentapplicationIfo->semail = $row['semail'];
+    $studentapplicationIfo->cname = $row['cname'];
+    $studentapplicationIfo->jid = $row['jid'];
+    $studentapplicationIfo->status = $row['status'];
+    $studentapplicationIfo->applytime = $row['applytime'];
+    return $studentapplicationIfo;
+}
 class notification_info
 {
     public $nid;
@@ -42,6 +59,8 @@ $conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
+//initialize feedback variable to frontend.
+$response = array();
 
 //get parameter from frontend.
 $cname = $_POST['cname'];
@@ -52,7 +71,18 @@ $cname = $_POST['cname'];
     `status` VARCHAR(10) NULL,
     `applytime` date,
 //get new application from backend database
-$sql_get_application
+$sql_get_application_update = "select * from StudentApplyJob where cname = '$cname';";
+$result_get_application_update = mysqli_query($conn, $sql_get_application_update);
+$temp_array = array();
+if ($result_get_application_update->num_rows > 0){
+    while ($row = $result_get_application_update->fetch_assoc()){
+        $info = Build_Student_Application_Info($row);
+        array_push($temp_array, $info);
+    }
+    $response['studentApplicationInfo'] = $temp_array;
+}
 
+//get company info
+$sql_company_info = "select * from Company where cname = '$cname';";
 $conn->close();
 ?>
