@@ -55,8 +55,8 @@ CREATE TABLE `StudentFollowCompany` (
         REFERENCES `Company`(`cname`)
 );
 
-
 CREATE TABLE `StudentApplyJob` (
+    `aid` VARCHAR(10) NOT NULL,
     `semail` VARCHAR(20) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
     `cname` VARCHAR(45) NOT NULL,
