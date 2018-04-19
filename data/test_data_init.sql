@@ -16,14 +16,14 @@
 
   */
 
-INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
-VALUES ('dx1368@nyu.edu', '12345678', '9998887777', 'Da', 'Xu', 'New York University', 'ECE', '4.0', 'xxxxx');
-INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
-VALUES ('cz1522@nyu.edu', '12345678', '9998886666', 'Cong', 'Zhang', 'New York University', 'CS', '4.0', 'xxxxx');
-INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
-VALUES ('qy1449@nyu.edu', '12345678', '9998884444', 'Qian', 'Yu', 'New York University', 'CS', '4.0', 'xxxxx');
-INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`)
-VALUES ('sy1567@nyu.edu', '12345678', '9998882222', 'Song', 'Yan', 'New York University', 'ECE', '2.8', 'xxxxx');
+INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`,`sprivacy`)
+VALUES ('dx1368@nyu.edu', '12345678', '9998887777', 'Da', 'Xu', 'New York University', 'ECE', '4.0', 'xxxxx',TRUE);
+INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`,`sprivacy`)
+VALUES ('cz1522@nyu.edu', '12345678', '9998886666', 'Cong', 'Zhang', 'New York University', 'CS', '4.0', 'xxxxx', TRUE);
+INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`,`sprivacy`)
+VALUES ('qy1449@nyu.edu', '12345678', '9998884444', 'Qian', 'Yu', 'New York University', 'CS', '4.0', 'xxxxx',TRUE);
+INSERT INTO `Student` (`semail`, `skey`, `sphone`, `sfirstname`, `slastname`, `suniversity`, `smajor`, `sgpa`, `sresume`,`sprivacy`)
+VALUES ('sy1567@nyu.edu', '12345678', '9998882222', 'Song', 'Yan', 'New York University', 'ECE', '2.8', 'xxxxx',FALSE);
 
 /*
     format of company:
@@ -43,6 +43,7 @@ INSERT INTO `Company` (`cname`, `ckey`, `cemail`, `clocation`, `cphone`, `cindus
 VALUES ('ZhuHoucong', '11', 'Houcong@ming.com', 'Beijing', '1521156611', 'CS', 'xxxxx');
 INSERT INTO `Company` (`cname`, `ckey`, `cemail`, `clocation`, `cphone`, `cindusty`, `cdescription`)
 VALUES ('ZhuZaiji', '12', 'Zaiji@ming.com', 'Beijing', '1566157211', 'CS', 'xxxxx');
+
 
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
