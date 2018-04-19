@@ -62,7 +62,7 @@ CREATE TABLE `StudentApplyJob` (
     `cname` VARCHAR(45) NOT NULL,
     `status` VARCHAR(10) NULL,
     `applytime` date,
-    PRIMARY KEY (`semail`,`jid`,`cname`),
+    PRIMARY KEY (`aid`),
     FOREIGN key (`semail`)
         REFERENCES `Student` (`semail`),
     FOREIGN KEY (`cname`)
@@ -109,7 +109,7 @@ CREATE TABLE `Message` (
     `content` VARCHAR(200) NOT NULL,
     `sendtime` date NOT NULL,
     `status` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`semailsend`, `semailreceive`),
+    PRIMARY KEY (`mid`),
     FOREIGN key (`semailsend`)
         REFERENCES `Student` (`semail`),
     FOREIGN KEY (`semailreceive`)
