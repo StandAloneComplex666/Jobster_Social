@@ -65,11 +65,6 @@ $response = array();
 //get parameter from frontend.
 $cname = $_POST['cname'];
 
-`semail` VARCHAR(20) NOT NULL,
-    `jid` VARCHAR(10) NOT NULL,
-    `cname` VARCHAR(45) NOT NULL,
-    `status` VARCHAR(10) NULL,
-    `applytime` date,
 //get new application from backend database
 $sql_get_application_update = "select * from StudentApplyJob where cname = '$cname';";
 $result_get_application_update = mysqli_query($conn, $sql_get_application_update);
@@ -84,5 +79,14 @@ if ($result_get_application_update->num_rows > 0){
 
 //get company info
 $sql_company_info = "select * from Company where cname = '$cname';";
+$result_company_info = mysqli_query($conn, $sql_company_info);
+$temp_array2 = array();
+if ($result_company_info->num_rows > 0){
+    $temp_array = $result_company_info->fetch_assoc();
+    $response['companyInfo'] = $temp_array;
+}
+
+//return the results to frontend and close the connection to database.
+echo json_encode($response);
 $conn->close();
 ?>
