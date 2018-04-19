@@ -19,6 +19,7 @@ CREATE TABLE `Student` (
     `smajor` VARCHAR(5)  NULL,
     `sgpa` VARCHAR(5)  NULL,
     `sresume` VARCHAR(40)  NULL,
+    `sprivacy` BOOLEAN NOT NULL,
     PRIMARY KEY (`semail`)
 );
 
