@@ -46,11 +46,26 @@ if ($conn->connect_error) {
 //getparameters from frontend.
 $cname = $_POST['cname'];
 $jid = $_POST['jid'];
+$student_array = $_POST['student_array'];
+
+//initialize array for feedback to frontend.
+$response = array();
 
 //query all the student that followed and update notification
 
-$sql_post_selected_student = "INSERT INTO notification(`nid`, `companysend`, `semailreceive`, `jid`, `pushtime`, `status`)
-VALUES ('', '$cname', '$semail[1]', '$jid', CURRENT_DATE, 'unviewed');";
+foreach ($student_array as $student){
+    $result_max_nid  = mysqli_query($conn,"select max(nid) as mnid from notification;");
+    $nid = string(intval($result_max_nid->fetch_assoc()['mnid']) + 1);
+    $sql_post_selected_student = "INSERT INTO notification(`nid`, `companysend`, `semailreceive`, `jid`, `pushtime`, `status`)
+    VALUES ('$nid', '$cname', '$student', '$jid', CURDATE(), 'unviewed');";
+    if (mysqli_query($conn, $sql_post_selected_student) == True){
+        $response['$student'] = "Updated successfully.";
+    }
+    else{
+        $response['$student'] = NULL;
+    }
+}
 
+echo json_encode($response);
 $conn->close();
 ?>
