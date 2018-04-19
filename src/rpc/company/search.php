@@ -22,4 +22,5 @@ $response = array();
 //get parameters from frontend
 $keyword = $_POST['keyword'];
 
-
+//query from backend database to find the students that fit the keywords;
+$sql_search_student = "select * from student where $suniverstiy like '%$keyword%' or sgpa"
