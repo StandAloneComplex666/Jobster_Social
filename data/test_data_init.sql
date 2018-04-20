@@ -1,4 +1,4 @@
---INSERT INTO `User` (`uid`, `uname`, `uaddress`, `uphone`, `ucity`) VALUES (`101`, `User1`, `1 1st st`, `1234567890`, `Brooklyn`);
+
 
 -- All the data in this file is used for testing and all of the are created by developer
 
@@ -84,7 +84,7 @@ INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('dx1368@nyu.edu',
     `applytime` date,
 */
 INSERT INTO `StudentApplyJob` (`aid`, `semail`, `jid` ,`cname` ,`status`, `applytime`)
-VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', `2018-04-11`);
+VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', '2018-04-11');
 
 /*format of studentfriends
     `semailsend` VARCHAR(20) NOT NULL,
