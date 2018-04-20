@@ -87,7 +87,10 @@ INSERT INTO `StudentApplyJob` (`aid`, `semail`, `jid` ,`cname` ,`status`, `apply
 VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', `2018-04-11`);
 
 /*
-
+    `semailsend` VARCHAR(20) NOT NULL,
+    `semailreceive` VARCHAR(20) NOT NULL,
+    `status` VARCHAR(10) NOT NULL,
+    `sendtime` date,
 */
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
