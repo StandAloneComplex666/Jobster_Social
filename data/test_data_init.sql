@@ -109,4 +109,15 @@ VALUES('1', 'ZhuYuanzhang', 'dx1368@nyu.edu', '2', '2018-04-12', 'unviewed');
 INSERT INTO `notification` (`nid`, `companysend` , `semailreceive`, `jid`, `pushtime`, `status`)
 VALUES('2', 'ZhuHoucong', 'sy1567@nyu.edu', '1', '2018-04-13', 'unviewed');
 
-/
+/*format of message
+    `mid` VARCHAR(20) NOT NULL,
+    `semailsend` VARCHAR(20) NOT NULL,
+    `semailreceive` VARCHAR(20) NOT NULL,
+    `content` VARCHAR(200) NOT NULL,
+    `sendtime` date NOT NULL,
+    `status` VARCHAR(10) NOT NULL,
+*/
+INSERT INTO `Message` (`mid`, `semailsend`, `semailreceive`, `content`, `sendtime`, `status`)
+VALUES('1','dx1368@nyu.edu', 'cz1522@nyu.edu',"gaige ruhe", '2018-04-15', 'unviewed');
+INSERT INTO `Message` (`mid`, `semailsend`, `semailreceive`, `content`, `sendtime`, `status`)
+VALUES('1','cz1522@nyu.edu', 'qy1522@nyu.edu',"beijing baoweizhan chenggong lema", '2018-04-15', 'unviewed');
