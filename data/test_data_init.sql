@@ -76,6 +76,18 @@ INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('sy1567@nyu.edu',
 INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('dx1368@nyu.edu', 'ZhuYuanzhang');
 
 /*
+    `aid` VARCHAR(10) NOT NULL,
+    `semail` VARCHAR(20) NOT NULL,
+    `jid` VARCHAR(10) NOT NULL,
+    `cname` VARCHAR(45) NOT NULL,
+    `status` VARCHAR(10) NULL,
+    `applytime` date,
+*/
+INSERT INTO `StudentApplyJob` (`aid`, `semail`, `jid` ,`cname` ,`status`, `applytime`)
+VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', `2018-04-11`);
+
+/*
+
 */
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
