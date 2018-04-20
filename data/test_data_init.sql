@@ -44,6 +44,23 @@ VALUES ('ZhuHoucong', '11', 'Houcong@ming.com', 'Beijing', '1521156611', 'CS', '
 INSERT INTO `Company` (`cname`, `ckey`, `cemail`, `clocation`, `cphone`, `cindusty`, `cdescription`)
 VALUES ('ZhuZaiji', '12', 'Zaiji@ming.com', 'Beijing', '1566157211', 'CS', 'xxxxx');
 
+/*format of job
+
+    `jid` VARCHAR(10) NOT NULL,
+    `jlocation` VARCHAR(45) NULL,
+    `jtitle` VARCHAR(45) NULL,
+    `jsalary` VARCHAR(45) NULL,
+    `jreq_diploma` VARCHAR(45) NULL,
+    `jreq_experience` VARCHAR(45) NULL,
+    `jreq_skills` VARCHAR(90) NULL,
+    `jdescription` VARCHAR(200),
+*/
+INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
+VALUES ('1', 'Beijing', 'Software Engineer', '120K', 'Bachelor', '5', 'JAVA', 'XXXXXX');
+INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
+VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor', '3', 'C++', 'XXXXXX');
+
+
 
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
