@@ -68,7 +68,14 @@ VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor', '3', 'C++', 'XX
 INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuHoucong', '1', '2018-04-19');
 INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuYuanzhang', '2', '2018-04-19');
 
+/*
+    `semail` VARCHAR(20) NOT NULL,
+    `cname` VARCHAR(45) NOT NULL,
+*/
+INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('sy1567@nyu.edu', 'ZhuHoucong');
+INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('dx1368@nyu.edu', 'ZhuYuanzhang');
 
-
+/*
+*/
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
