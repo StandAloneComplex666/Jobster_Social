@@ -60,7 +60,7 @@ VALUES ('1', 'Beijing', 'Software Engineer', '120K', 'Bachelor', '5', 'JAVA', 'X
 INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
 VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor', '3', 'C++', 'XXXXXX');
 
-/*
+/*format of companypostjob
     `cname` VARCHAR(45) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
     `posttime` date,
@@ -68,14 +68,14 @@ VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor', '3', 'C++', 'XX
 INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuHoucong', '1', '2018-04-19');
 INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuYuanzhang', '2', '2018-04-19');
 
-/*
+/*format of studentfollowcompany
     `semail` VARCHAR(20) NOT NULL,
     `cname` VARCHAR(45) NOT NULL,
 */
 INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('sy1567@nyu.edu', 'ZhuHoucong');
 INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('dx1368@nyu.edu', 'ZhuYuanzhang');
 
-/*
+/*format of studentapplyjob
     `aid` VARCHAR(10) NOT NULL,
     `semail` VARCHAR(20) NOT NULL,
     `jid` VARCHAR(10) NOT NULL,
@@ -86,7 +86,7 @@ INSERT INTO `StudentFollowCompany` (`semail`, `cname`) VALUES ('dx1368@nyu.edu',
 INSERT INTO `StudentApplyJob` (`aid`, `semail`, `jid` ,`cname` ,`status`, `applytime`)
 VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', `2018-04-11`);
 
-/*
+/*format of studentfriends
     `semailsend` VARCHAR(20) NOT NULL,
     `semailreceive` VARCHAR(20) NOT NULL,
     `status` VARCHAR(10) NOT NULL,
@@ -94,3 +94,19 @@ VALUES('1', 'dx1368@nyu.edu', '2' ,'ZhuYuanzhang', 'unviewed', `2018-04-11`);
 */
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
 INSERT INTO `StudentFriends` VALUES ('qy1449@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-02');
+
+/*format of notification
+    `nid` VARCHAR(10) NOT NULL,
+    `companysend` VARCHAR(45) NULL,
+    `semailsend` VARCHAR(20) NULL,
+    `semailreceive` VARCHAR(20)  NOT NULL,
+    `jid` VARCHAR(10)  NOT NULL,
+    `pushtime` date NOT NULL,
+    `status` VARCHAR(10) NOT NULL,
+*/
+INSERT INTO `notification` (`nid`, `companysend` , `semailreceive`, `jid`, `pushtime`, `status`)
+VALUES('1', 'ZhuYuanzhang', 'dx1368@nyu.edu', '2', '2018-04-12', 'unviewed');
+INSERT INTO `notification` (`nid`, `companysend` , `semailreceive`, `jid`, `pushtime`, `status`)
+VALUES('2', 'ZhuHoucong', 'sy1567@nyu.edu', '1', '2018-04-13', 'unviewed');
+
+/
