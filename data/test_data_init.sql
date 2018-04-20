@@ -60,6 +60,14 @@ VALUES ('1', 'Beijing', 'Software Engineer', '120K', 'Bachelor', '5', 'JAVA', 'X
 INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
 VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor', '3', 'C++', 'XXXXXX');
 
+/*
+    `cname` VARCHAR(45) NOT NULL,
+    `jid` VARCHAR(10) NOT NULL,
+    `posttime` date,
+*/
+INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuHoucong', '1', '2018-04-19');
+INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuYuanzhang', '2', '2018-04-19');
+
 
 
 INSERT INTO `StudentFriends` VALUES ('dx1368@nyu.edu', 'cz1522@nyu.edu', 'unviewed', '2018-04-03');
