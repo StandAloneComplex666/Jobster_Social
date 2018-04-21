@@ -31,8 +31,12 @@ $jid = $_POST['jid'];
 
 // get nid
 $result_max_nid  = mysqli_query($conn,"select max(nid) as mnid from notification;");
-$nid = strval(intval($result_max_nid->fetch_assoc()['mnid']) + 1);
-
+if ($result_max_nid->num_rows > 0) {
+    $nid = strval(intval($result_max_nid->fetch_assoc()['mnid']) + 1);
+}
+else{
+    $nid = 1;
+}
 //update backend database
 $sql_forward_update = "INSERT INTO notification (`nid`, `semailsend`, `semailreceive`, `jid`, `pushtime`, `status`)
 values ('$nid', '$semail', '$semailreceive', '$jid', CURDATE(), 'unviewed')";
