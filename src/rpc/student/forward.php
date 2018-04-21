@@ -5,7 +5,13 @@
  * Date: 2018/4/13
  * Time: 18:17
  */
-
+//forward test data
+/*
+$nid = 11;
+$semail = 'cz1522@nyu.edu';
+$semailreceive = 'qy1449@nyu.edu';
+$jid = 2;
+*/
 //the parameters that used for connecting to database.
 $servername = "localhost";
 $username = "root";
@@ -19,7 +25,6 @@ if ($conn->connect_error) {
 }
 
 //get parameters from frontend
-$nid = $_POST['nid'];
 $semail = $_POST['semail'];
 $semailreceive = $_POST['semailreceive'];
 $jid = $_POST['jid'];
