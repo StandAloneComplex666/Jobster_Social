@@ -46,8 +46,8 @@ if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
 //search companies that fit the keywords from backend database.
-$sql_company_search = "select *  from  Company where cname LIKE '%$keyword%' or clocation like '%$keyword%' or 
-cindustry like '%$keyword%' or cemail like '%$keyword%' or cphone like '%$keyword%' or cdescription like '%$keyword%';";
+$sql_company_search = "select * from  Company where (cname LIKE '%$keyword%') or (clocation like '%$keyword%') or 
+(cindustry like '%$keyword%') or (cemail like '%$keyword%') or (cphone like '%$keyword%') or (cdescription like '%$keyword%') ;";
 $result_company_search = mysqli_query($conn, $sql_company_search);
 
 if  ($result_company_search->num_rows > 0){
@@ -58,6 +58,7 @@ if  ($result_company_search->num_rows > 0){
     echo json_encode($response);
 }
 else{
+    header('HTTP/1.0 403 Forbidden');
     die('Cannot find company fits your keyword:'.$keyword);
 }
 $conn->close();
