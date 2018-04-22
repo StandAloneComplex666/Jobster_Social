@@ -47,7 +47,7 @@ if ($conn->connect_error) {
 }
 //search companies that fit the keywords from backend database.
 $sql_company_search = "select *  from  Company where cname LIKE '%$keyword%' or clocation like '%$keyword%' or 
-cindusty like '%$keyword%' or cemail like '%$keyword%' or cphone like '%$keyword%' or cdescription like '%$keyword%';";
+cindustry like '%$keyword%' or cemail like '%$keyword%' or cphone like '%$keyword%' or cdescription like '%$keyword%';";
 $result_company_search = mysqli_query($conn, $sql_company_search);
 
 if  ($result_company_search->num_rows > 0){
