@@ -32,7 +32,7 @@ $response = array();
 $sql_update_personal_info = "update student set sgpa = '$sgpa', sphone = '$sphone', suniversity = '$suniversity', smajor = '$smajor', sresume = '$sresume'
 where semail = '$semail';";
 if (mysqli_query($conn, $sql_update_personal_info) == True){
-    $response['update_personal_info'] = 'Updated successfully!';
+    $response['update_personal_info'] = "Student user ".$semail.": Profile updated successfully!';
 }
 else{
     $response = "ERROR: ".$update."<br>".$conn->error;
