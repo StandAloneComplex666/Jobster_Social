@@ -29,7 +29,7 @@ $sresume = $_POST['sresume'];
 $response = array();
 
 //update personal information to backend database.
-$sql_update_personal_info = "update student set sgpa = '$sgpa', sphone = '$sphone', suniversity = '$suniversity', smajor = '$smajor', sresume = '$resume'
+$sql_update_personal_info = "update student set sgpa = '$sgpa', sphone = '$sphone', suniversity = '$suniversity', smajor = '$smajor', sresume = '$sresume'
 where semail = '$semail';";
 if (mysqli_query($conn, $sql_update_personal_info) == True){
     $response['update_personal_info'] = 'Updated successfully!';
