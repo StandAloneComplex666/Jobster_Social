@@ -47,6 +47,8 @@ if ($conn->connect_error) {
 
 //get parameter from frontend
 $keyword = $_POST['keyword'];
+//initialize response to frontend.
+$response = array();
 
 //query from backend database which fit the keywords.
 $sql_search_student = "select * from Student where semail like '%$keyword%' or  sphone like '%$keyword%' or  
