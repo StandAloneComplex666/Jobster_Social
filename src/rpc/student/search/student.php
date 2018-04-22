@@ -61,7 +61,7 @@ $result_search_student = mysqli_query($conn, $sql_search_student);
             $info = Build_personal_Info($row);
             array_push($response, $info);
         }
-        echo json_encode($response_personal_info);
+        echo json_encode($response);
     }
     else {
         header('HTTP/1.0 403 Forbidden');
