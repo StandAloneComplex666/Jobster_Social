@@ -31,6 +31,8 @@ function Build_Company_Info($row)
 
 //get parameter from frontend.
 $keyword = $_POST['keyword'];
+//initialize response to frontend.
+$response = array();
 
 //the parameters that used for connecting to database.
 $servername = "localhost";
