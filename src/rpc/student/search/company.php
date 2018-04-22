@@ -56,8 +56,7 @@ if  ($result_company_search->num_rows > 0){
     echo json_encode($response);
 }
 else{
-    header('HTTP/1.0 403 Forbidden');
-    die('Cannot find company fits your keyword.');
+    die('Cannot find company fits your keyword:'.$keyword);
 }
 $conn->close();
 ?>
