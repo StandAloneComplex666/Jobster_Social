@@ -36,6 +36,5 @@ else{
     $response['update_statement'] = "Database error:"."<br>".$conn->error;
     echo $response;
 }
-
 $conn->close();
 ?>
