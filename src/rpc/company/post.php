@@ -53,13 +53,21 @@ CREATE TABLE `JobAnnouncement` (
 //get company parameter.
 $cname = $_POST['cname'];
 //the job parameters.
-$jid = $_POST['jid'];
 $jlocation = $_POST['jlocation'];
 $jtitle = $_POST['jsalary'];
 $jreq_diploma = $_POST['jreq_diploma'];
 $jreq_experience = $_POST['jreq_experience'];
 $jreq_skills = $_POST['jskills'];
 $jdescription = $_POST['jdescription'];
+
+//create jid.
+$result_max_jid  = mysqli_query($conn,"select max(jid) as mjid from JobAnnouncement;");
+if ($result_max_jid->num_rows > 0){
+    $jid = strval(intval($result_max_jid->fetch_assoc()['mjid']) + 1);
+}
+else{
+    $jid = 1;
+}
 
 //update the JobAnnouncement and Notification table.
 $sql_update_jobannouncement = "INSERT INTO JobAnnoncement (`jid`, `jlocation`, `jtitle`, `jreq_experience`, `jreq_skills`, `jreq_diploma`, `jdescription`)
