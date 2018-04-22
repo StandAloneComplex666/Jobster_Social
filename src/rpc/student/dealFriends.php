@@ -45,7 +45,7 @@ and semailreceive = '$receive';";
 elseif ($choice == "Denied"){
 $sql_update_friend_status = "DELETE FROM StudentFriends WHERE semailsend = '$send' and semailreceive = '$receive';";
     if (mysqli_query($conn, $sql_update_friend_status) == True){
-        $response['update_status'] = $receive." denied your request."
+        $response['update_status'] = $receive." denied your request.";
         echo $response;
     }
     else{
