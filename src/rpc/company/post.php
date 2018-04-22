@@ -102,20 +102,21 @@ CREATE TABLE `Notification` (
 */
 $sql_student_followed = "SELECT semail from StudentFollowCompany where cname = $cname;";
 $result_student_followed = mysqli_query($conn, $sql_student_followed);
-if ($result_student_followed->num_rows > 0){
-    while ($row = $result_student_followed->fetch_assoc()){
+if ($result_student_followed->num_rows > 0) {
+    while ($row = $result_student_followed->fetch_assoc()) {
         $semailreceive = $row['semail'];
         $sql_update_notification = "INSERT INTO Notification (`companysend`, `semailreceive`, `jid`, `pushtime`, `status`)
         VALUES ('$cname', '$semailreceive', '$jid', CURRENT_DATE, 'unviewed');";
-        if (mysqli_query($conn, $sql_update_notification) == True){
-            array_push($response['send_notification_to_followed_student'],'$semailreceive');
+        if (mysqli_query($conn, $sql_update_notification) == True) {
+            array_push($response['send_notification_to_followed_student'], '$semailreceive');
         }
     }
-    else{
+}
+else{
         $response['send_notification_to_followed_student'] = "Database error:"."<br>"."$conn->error";
         header('HTTP/1.0 403 Forbidden');
-    }
 }
+
 echo json_encode($response);
 $conn->close();
 
