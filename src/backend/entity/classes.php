@@ -103,15 +103,51 @@ class friend{
     public $semailreceive;
     public $status;
     public $sendtime;
+    function Build_friend_request_Info($row){
+        $friendRequestInfo = new friend();
+        $friendRequestInfo->semailsend = $row['semailsend'];
+        $friendRequestInfo->semailreceive = $row['semailreceive'];
+        $friendRequestInfo->status = $row['status'];
+        $friendRequestInfo->sendtime =$row['sendtime'];
+        return $friendRequestInfo;
+    }
 }
 
-function Build_friend_request_Info($row){
-    $friendRequestInfo = new friend();
-    $friendRequestInfo->semailsend = $row['semailsend'];
-    $friendRequestInfo->semailreceive = $row['semailreceive'];
-    $friendRequestInfo->status = $row['status'];
-    $friendRequestInfo->sendtime =$row['sendtime'];
-    return $friendRequestInfo;
+
+
+class student_application{
+    public $semail;
+    public $cname;
+    public $jid;
+    public $status;
+    public $applytime;
+    function Build_Student_Application_Info($row){
+        $studentapplicationIfo = new student_application();
+        $studentapplicationIfo->semail = $row['semail'];
+        $studentapplicationIfo->cname = $row['cname'];
+        $studentapplicationIfo->jid = $row['jid'];
+        $studentapplicationIfo->status = $row['status'];
+        $studentapplicationIfo->applytime = $row['applytime'];
+        return $studentapplicationIfo;
+    }
 }
+class student_info_restircted{
+    public $suniversity;
+    public $smajor;
+    public $sgpa;
+    public $sresume;
+    function Build_student_info_restricted($row)
+    {
+        $restrictedStudentInfo = new student_info_restircted();
+        $restrictedStudentInfo->suniversity = $row['suniversity'];
+        $restrictedStudentInfo->smajor = $row['smajor'];
+        $restrictedStudentInfo->sgpa = $row['sgpa'];
+        $restrictedStudentInfo->sresume = $row['sresume'];
+        return $restrictedStudentInfo;
+    }
+}
+
+
+
 
 ?>
