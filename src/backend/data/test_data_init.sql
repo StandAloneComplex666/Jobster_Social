@@ -60,21 +60,12 @@ VALUES ('Microsoft', '1', 'HR@ms.com', 'Seattle', '9998887777', 'CS', 'xxxxx');
     `jreq_skills` VARCHAR(90) NULL,
     `jdescription` VARCHAR(200),
 */
-INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
-VALUES ('1', 'Beijing', 'Software Engineer', '120K', 'Bachelor MS', '5', 'JAVA', 'XXXXXX');
-INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
-VALUES ('2', 'Nanjing', 'Software Engineer', '100K', 'Bachelor CS', '3', 'C++', 'XXXXXX');
-INSERT INTO `JobAnnouncement` (`jid`, `jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
-VALUES ('3', 'Seattle', 'Software Engineer', '100K', 'Master CS', '3', 'C++', 'XXXXXX');
-
-/*format of companypostjob
-    `cname` VARCHAR(45) NOT NULL,
-    `jid` VARCHAR(10) NOT NULL,
-    `posttime` date,
-*/
-INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuHoucong', '1', '2018-04-19');
-INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('ZhuYuanzhang', '2', '2018-04-19');
-INSERT INTO `CompanyPostJob` (`cname`, `jid`, `posttime`) VALUES ('Microsoft', '3', '2018-04-19');
+INSERT INTO `JobAnnouncement` (`jid`, `cname`,`jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
+VALUES ('1', 'ZhuHoucong','Beijing', 'Software Engineer', '120K', 'Bachelor MS', '5', 'JAVA', 'XXXXXX');
+INSERT INTO `JobAnnouncement` (`jid`, `cname`,`jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
+VALUES ('2', 'ZhuYuanzhang','Nanjing', 'Software Engineer', '100K', 'Bachelor CS', '3', 'C++', 'XXXXXX');
+INSERT INTO `JobAnnouncement` (`jid`, `cname`,`jlocation`, `jtitle`, `jsalary`, `jreq_diploma`, `jreq_experience`, `jreq_skills`, `jdescription`)
+VALUES ('3', 'Microsoft','Seattle', 'Software Engineer', '100K', 'Master CS', '3', 'C++', 'XXXXXX');
 
 /*format of studentfollowcompany
     `semail` VARCHAR(20) NOT NULL,
