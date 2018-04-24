@@ -25,6 +25,7 @@ CREATE TABLE `Student` (
 
 CREATE TABLE `JobAnnouncement` (
     `jid` VARCHAR(10) NOT NULL,
+    `cname` VARCHAR(45) NOT NULL,
     `jlocation` VARCHAR(45) NULL,
     `jtitle` VARCHAR(45) NULL,
     `jsalary` VARCHAR(45) NULL,
@@ -32,18 +33,10 @@ CREATE TABLE `JobAnnouncement` (
     `jreq_experience` VARCHAR(45) NULL,
     `jreq_skills` VARCHAR(90) NULL,
     `jdescription` VARCHAR(200),
-    PRIMARY KEY (`jid`)
-);
-
-CREATE TABLE `CompanyPostJob` (
-    `cname` VARCHAR(45) NOT NULL,
-    `jid` VARCHAR(10) NOT NULL,
     `posttime` date,
-    PRIMARY KEY (`cname`,`jid`),
-    FOREIGN KEY (`cname`)
-        REFERENCES `Company`(`cname`),
-    FOREIGN KEY (`jid`)
-        REFERENCES `JobAnnouncement`(`jid`)   
+    PRIMARY KEY (`jid`),
+    FOREIGN KEY(`cname`)
+        REFERENCES `Company`(`cname`)
 );
 
 CREATE TABLE `StudentFollowCompany` (
