@@ -57,20 +57,21 @@ class company_info{
     public $cindustry;
     public $clocation;
     public $cdescription;
+    function Build_Company_Info($row)
+    {
+        $companyInfo = new company_info();
+        $companyInfo->ceamil = $row['cemail'];
+        $companyInfo->ckey = $row['ckey'];
+        $companyInfo->cphone = $row['cphone'];
+        $companyInfo->cname = $row['cname'];
+        $companyInfo->cindustry = $row['cindustry'];
+        $companyInfo->clocation = $row['clocation'];
+        $companyInfo->cdescription = $row['cdescription'];
+        return $companyInfo;
+    }
 }
 
-function Build_Company_Info($row)
-{
-    $companyInfo = new company_info();
-    $companyInfo->ceamil = $row['cemail'];
-    $companyInfo->ckey = $row['ckey'];
-    $companyInfo->cphone = $row['cphone'];
-    $companyInfo->cname = $row['cname'];
-    $companyInfo->cindustry = $row['cindustry'];
-    $companyInfo->clocation = $row['clocation'];
-    $companyInfo->cdescription = $row['cdescription'];
-    return $companyInfo;
-}
+
 
 class notification_info
 {
@@ -81,21 +82,21 @@ class notification_info
     public $jid;
     public $pushtime;
     public $status;
-
+    function Build_Notification_Info($row)
+    {
+        $notificationInfo = new notification_info();
+        $notificationInfo ->nid = $row['nid'];
+        $notificationInfo ->companysend = $row['companysend'];
+        $notificationInfo ->semailsend = $row['semailsend'];
+        $notificationInfo ->semailreceive = $row['semailreceive'];
+        $notificationInfo ->jid = $row['jid'];
+        $notificationInfo ->pushtime = $row['pushtime'];
+        $notificationInfo ->status = $row['status'];
+        return $notificationInfo;
+    }
 }
 
-function Build_Notification_Info($row)
-{
-    $notificationInfo = new notification_info();
-    $notificationInfo ->nid = $row['nid'];
-    $notificationInfo ->companysend = $row['companysend'];
-    $notificationInfo ->semailsend = $row['semailsend'];
-    $notificationInfo ->semailreceive = $row['semailreceive'];
-    $notificationInfo ->jid = $row['jid'];
-    $notificationInfo ->pushtime = $row['pushtime'];
-    $notificationInfo ->status = $row['status'];
-    return $notificationInfo;
-}
+
 
 class friend{
     public $semailsend;
