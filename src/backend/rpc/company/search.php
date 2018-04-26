@@ -51,7 +51,7 @@ function search_resume($conn,$keyword)
     return $response;
 }
 
-function search_student_label($conn, $keyword){
+function search_student_label($conn, $keyword, $sgpalower, $sgpahigh){
     $response = array();
     //query from backend database to find the students that fit the keywords;
     $sql_search_student = "select * from student where suniversity like '%$keyword%' or (sgpa between '$sgpalower' and '$sgpahigh')
