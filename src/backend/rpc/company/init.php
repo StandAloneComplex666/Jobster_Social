@@ -27,7 +27,7 @@ $response = array();
 $cname = $_POST['cname'];
 
 //get new application from backend database
-$sql_get_application_update = "select * from StudentApplyJob where cname = '$cname' and status = 'unviewed';";
+$sql_get_application_update = "select semail, sphone, select semail from StudentApplyJob where cname = '$cname' and status = 'unviewed';";
 $result_get_application_update = mysqli_query($conn, $sql_get_application_update);
 $temp_array = array();
 if ($result_get_application_update->num_rows > 0){
