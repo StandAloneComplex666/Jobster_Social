@@ -59,7 +59,7 @@ else {
 //    echo 'error!';
 }
 
-echo json_encode($response);
+echo json_encode(array_unqiue($response));
 
 $conn->close();
 ?>
