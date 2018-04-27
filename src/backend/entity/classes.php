@@ -9,7 +9,7 @@ class job_info{
 	public $jreq_skills;
 	public $jlocation;
 	public $jdescription;
-	public $postdate;
+	public $posttime;
 	public $student_applied = array();
 	function Build_Job_Info($row)
 	{
@@ -23,7 +23,7 @@ class job_info{
     $jobInfo->jreq_experience = $row['jreq_experience'];
     $jobInfo->jdescription = $row['jdescription'];
     $jobInfo->jlocation = $row['jlocation'];
-    $jobInfo->postdate = $row['postdate'];
+    $jobInfo->posttime = $row['posttime'];
     return $jobInfo;
 	}
 	function Append_student_followed($student){;
@@ -42,6 +42,7 @@ class personal_info{
     public $sgpa;
     public $sresume;
     public $sprivacy;
+    public $aid;
     function Build_personal_Info($row)
     {
         $personalInfo = new personal_info();
@@ -55,6 +56,21 @@ class personal_info{
         $personalInfo->sgpa = $row['sgpa'];
         $personalInfo->sresume = $row['sresume'];
         $personalInfo->sprivacy = $row['sprivacy'];
+        return $personalInfo;
+    }
+    function Init_Company_Student_Info($row){
+        $personalInfo = new personal_info();
+        $personalInfo->semail = $row['semail'];
+        //$personalInfo->skey = $row['skey'];
+        $personalInfo->sphone = $row['sphone'];
+        $personalInfo->sfirstname = $row['sfirstname'];
+        $personalInfo->slastname = $row['slastname'];
+        $personalInfo->suniversity = $row['suniversity'];
+        $personalInfo->smajor = $row['smajor'];
+        $personalInfo->sgpa = $row['sgpa'];
+        $personalInfo->sresume = $row['sresume'];
+        $personalInfo->sprivacy = $row['sprivacy'];
+        $personalInfo->aid = $row['aid'];
         return $personalInfo;
     }
 }
