@@ -95,6 +95,9 @@ class company_info{
         $companyInfo->cdescription = $row['cdescription'];
         return $companyInfo;
     }
+    function Build_Company_Job($job){
+
+    }
 }
 
 

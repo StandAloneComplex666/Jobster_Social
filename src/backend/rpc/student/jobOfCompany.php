@@ -28,7 +28,7 @@ $cname = $_POST['cname'];
 $response = array();
 
 $sql_job_of_company = "select * from JobAnnouncement where cname = '$cname';";
-$result_sql_job_of_company = mysqli_query($con, $sql_job_of_company);
+$result_sql_job_of_company = mysqli_query($conn, $sql_job_of_company);
 if ($result_sql_job_of_company->num_rows > 0){
     while ($row = $result_sql_job_of_company->fetch_assoc()){
         $info = $objectJobInfo->Build_Job_Info($row);

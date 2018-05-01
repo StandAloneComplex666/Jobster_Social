@@ -41,7 +41,7 @@ if ($result_resume_path->num_rows > 0) {
     while ($row = $result_resume_path->fetch_assoc()) {
         $PDF_reader->setFilename($row['sresume']);
         $PDF_reader->decodePDF();
-        if (strpos($PDF_reader->output(), $keyword) or (strstr($row['suniversity'],$keyword)) or (strstr($row['smajor'], $keyword)) or (($row['sgpa']<$sgpahigh) and ($row['sgpa']>$sgpalower)))
+        if (strpos($PDF_reader->output(), $keyword) or (strstr($row['suniversity'],$keyword)) or (strstr($row['smajor'], $keyword)) or (($row['sgpa']<=$sgpahigh) and ($row['sgpa']>=$sgpalower)))
         {
             $info = $objectStudentInfo->Build_personal_Info($row);
             $response[$row['semail']] = $info;
