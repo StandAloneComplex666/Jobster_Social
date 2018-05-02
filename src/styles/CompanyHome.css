@@ -1,0 +1,66 @@
+.company-home {
+    /*background-color: white;*/
+    width: 1200px;
+    text-align: left;
+    position: relative;
+    margin-top: -1000px;
+}
+
+.company-home .home-main {
+    display: flex;
+    margin: auto;
+}
+
+.company-home .home-tab {
+    /*background-color: white;*/
+    border-radius: 2px;
+    margin-top: -65px;
+    margin-bottom: 40px;
+    width: 700px;
+}
+
+.company-home .home .ant-tabs-bar {
+    margin-bottom: 12px;
+}
+
+.home-left {
+    display:block;
+    width: 25%;
+}
+
+.tabpane {
+    /*background-color: #F5F5F5;*/
+    border-radius: 2px;
+}
+
+.company-home .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    color: white;
+    background: transparent;/*#283e4a;*/
+    border: 0px solid #283e4a;
+    /*border-radius: 0px;*/
+    /*color: white;*/
+    margin-right: 5px;
+}
+
+.friend-list .ant-list-split .ant-list-item {
+    border-bottom: 0;
+}
+
+.company-home .ant-list-item {
+    /*box-shadow: 1px 2px 8px 1px #e5e5e5;*/
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.company-home .item-container {
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.company-home .company-info {
+    width: 300px;
+    height: 220px;
+}
