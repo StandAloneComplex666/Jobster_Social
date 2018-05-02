@@ -17,6 +17,11 @@ $username = $_POST['username'];
 $keywords = $_POST['keywords'];
 $user_type = $_POST['usertype'];
 
+//prevent xss attack
+$username = htmlspecialchars($username, ENT_QUOTES);
+$keywords = htmlspecialchars($keywords, ENT_QUOTES);
+$user_type = htmlspecialchars($user_type, ENT_QUOTES);
+
 if ($user_type == 'student') {
     $sql_check_username_exist = "select semail from Student where semail = ?";
     $check_username_exist = $conn->prepare($sql_check_username_exist);
@@ -24,12 +29,14 @@ if ($user_type == 'student') {
     $check_username_exist->execute();
     $result_check_user_name_exist = $check_username_exist->get_result();
 
-    $sql_keywords_match = "select semail, skey from Student where semail = ? and skey = ?;";
+    // $sql_keywords_match = "select semail, skey from Student where semail = '$username' and skey = '$keywords';";
+
+    $sql_keywords_match = "select semail, skey from Student where (semail = ?) and (skey = ?);";
     $keywords_match = $conn->prepare($sql_keywords_match);
-    $keywords_match->bind_param('ss',$username,$keywords);
+    $keywords_match->bind_param('ss',$username, $keywords);
     $keywords_match->execute();
     $result_keywords_match = $keywords_match->get_result();
-    }
+}
 else if ($user_type == 'company') {
     $sql_check_username_exist = "select cname from Company where cname = ?";
     $check_username_exist = $conn->prepare($sql_check_username_exist);
@@ -44,9 +51,9 @@ else if ($user_type == 'company') {
     $result_keywords_match = $keywords_match->get_result();
 }
 
-$result_username_exist = mysqli_query($conn, $sql_check_username_exist);
+//$result_username_exist = mysqli_query($conn, $sql_check_username_exist);
 if ($result_check_user_name_exist->num_rows > 0) {
-    $result_keywords_match = mysqli_query($conn, $sql_keywords_match);
+//    $result_keywords_match = mysqli_query($conn, $sql_keywords_match);
     if ($result_keywords_match->num_rows > 0) {
         $response = "Login successfully!";
     } else {
@@ -59,3 +66,4 @@ if ($result_check_user_name_exist->num_rows > 0) {
 }
 
 echo $response;
+?>
