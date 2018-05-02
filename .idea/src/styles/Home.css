@@ -1,0 +1,72 @@
+.home {
+    /*background-color: white;*/
+    position: relative;
+    margin-top: -1000px;
+    width: 1200px;
+    text-align: left;
+}
+
+.home-main {
+    display: flex;
+    margin: auto;
+}
+
+.home-tab {
+    /*background-color: white;*/
+    border-radius: 2px;
+    margin-top: -65px;
+    margin-bottom: 40px;
+    width: 80%;
+}
+
+.home .ant-tabs-bar {
+    margin-bottom: 12px;
+}
+
+.home-left {
+    display:block;
+    width: 25%;
+}
+
+.tab {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: block;
+}
+
+.ant-tabs-bar {
+    height: 50px;
+    border-bottom: 0px;
+
+}
+
+.tabpane {
+    /*background-color: #F5F5F5;*/
+    /*border-radius: 2px;*/
+}
+
+.home .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    color: white;
+    background: transparent;/*#283e4a;*/
+    border: 0px solid #283e4a;
+    /*border-radius: 0px;*/
+    /*color: white;*/
+    margin-right: 5px;
+}
+
+.friend-list .ant-list-split .ant-list-item {
+    border-bottom: 0;
+}
+
+.home .ant-list-item {
+    /*box-shadow: 1px 2px 8px 1px #e5e5e5;*/
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.home .item-container {
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

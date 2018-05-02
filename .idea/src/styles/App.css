@@ -1,0 +1,51 @@
+@import "../../node_modules/antd/dist/antd.css";
+@import "Register.css";
+@import "Main.css";
+@import "Login.css";
+@import "Header.css";
+@import "ItemContainer.css";
+@import "UserInfo.css";
+@import "Home.css";
+@import "UserInfo.css";
+@import "FriendsList.css";
+@import "SearchContainer.css";
+@import "Poster.css";
+@import "ApplicationContainer.css";
+@import "CompanySearch.css";
+@import "ResultCompany.css";
+@import "MessageContainer.css";
+@import "ResultPeople.css";
+@import "CompanyHome.css";
+@import "UpdateInfoForm.css";
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  margin: 8px 12px;
+  height: 45px;
+  float: left;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.App-header {
+  background-color: #54adff;
+  height: 60px;
+  color: white;
+  display: flex;
+  /*position: fixed;*/
+}
+
+.App-title {
+  font-size: 2.5em;
+  color: black;
+  padding-top: 10px;
+  float: left;
+}
+
+.App-intro {
+  font-size: large;
+}
+
