@@ -18,7 +18,7 @@ $response = array();
 //the parameters that used for connecting to database.
 $servername = "localhost";
 $dbusername = "root";
-$password = "";
+$password = "root";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
@@ -26,26 +26,7 @@ $conn = new mysqli($servername, $dbusername, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
-////search companies that fit the keywords from backend database.
-//$sql_company_search = "select * from  Company where (cname LIKE '%$keyword%') or (clocation like '%$keyword%') or
-//(cindustry like '%$keyword%') or (cemail like '%$keyword%') or (cphone like '%$keyword%') or (cdescription like '%$keyword%') ;";
-//$result_company_search = mysqli_query($conn, $sql_company_search);
-//
-//if  ($result_company_search->num_rows > 0){
-//    while ($row = $result_company_search->fetch_assoc()){
-//        $info = $objectCompanyInfo->Build_Company_Info($row);
-//        array_push($response, $info);
-//    }
-//    echo json_encode($response);
-//}
-//else{
-//    header('HTTP/1.0 403 Forbidden');
-//    die('Cannot find company fits your keyword:'.$keyword);
-//}
-//get new application from backend database
-
-$sql_company_search = "select * from  Company where (cname LIKE '%$keyword%') or (clocation like '%$keyword%') or 
-//(cindustry like '%$keyword%') or (cemail like '%$keyword%') or (cphone like '%$keyword%') or (cdescription like '%$keyword%') ;";
+$sql_company_search = "select * from  Company where (cname LIKE '%$keyword%') or (clocation like '%$keyword%') or (cindustry like '%$keyword%') or (cemail like '%$keyword%') or (cphone like '%$keyword%') or (cdescription like '%$keyword%') ;";
 
 $result_company_search = mysqli_query($conn, $sql_company_search);
 
@@ -62,7 +43,7 @@ if ($result_company_search->num_rows > 0){
             //echo 'got student'."<br>";
             while ($row_job = $result_job_of_company->fetch_assoc()){
                 $info_job = $objectJobInfo->Build_Job_Info($row_job);
-                $info->Append_student_followed($info_job);
+                $info->add_Jobs($info_job);
             }
         }
         else{
@@ -70,7 +51,8 @@ if ($result_company_search->num_rows > 0){
         }
         array_push($temp_array, $info);
     }
-    $response['studentApplicationInfo'] = $temp_array;
+    $response = $temp_array;
 }
+echo json_encode($response);
 $conn->close();
 ?>
