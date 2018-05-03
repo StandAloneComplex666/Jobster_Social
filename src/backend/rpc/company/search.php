@@ -39,10 +39,14 @@ $temp_array = array();
 $keyword = $_POST['keyword'];
 $sgpalower = $_POST['sgpalower'];
 $sgpahigh = $_POST['sgpahigh'];
-//prevent injection.
+//prevent injection and xss attack.
 $keyword = $conn->real_escape_string($keyword);
 $sgpahigh = $conn->real_escape_string($sgpahigh);
 $sgpalower = $conn->real_escape_string($sgpalower);
+
+$keyword = htmlspecialchars($keyword, ENT_QUOTES);
+$keyword = htmlspecialchars($sgpahigh, ENT_QUOTES);
+$keyword = htmlspecialchars($sgpalower, ENT_QUOTES);
 
 //query resume that fit the keyword
 
