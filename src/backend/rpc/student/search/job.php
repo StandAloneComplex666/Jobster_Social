@@ -25,6 +25,7 @@ $objectJobInfo = new job_info();
 $keyword = $_POST['keyword'];
 //prevent injection
 $keyword = $conn->real_escape_string($keyword);
+$keyword = htmlspecialchars($keyword, ENT_QUOTES);
 //initialize response to frontend.
 $response = array();
 
