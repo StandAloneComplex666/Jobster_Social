@@ -24,7 +24,7 @@ $objectJobInfo = new job_info();
 
 //get parameter from frontend.
 $keyword = $_POST['keyword'];
-// prevent injection.
+// prevent injection and xss injection.
 $keyword = $conn->real_escape_string($keyword);
 $keyword = htmlspecialchars($keyword,ENT_QUOTES);
 //initialize response to frontend.
