@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 $semail = $_POST['semail'];
 $sgpa = $_POST['sgpa'];
 $sphone = $_POST['sphone'];
-$suniversity = $_POST['university'];
+$suniversity = $_POST['suniversity'];
 $smajor = $_POST['smajor'];
 $sresume = $_POST['sresume'];
 $sprivacy = $_POST['sprivacy'];
@@ -35,6 +35,16 @@ $sresume = htmlspecialchars($sresume, ENT_QUOTES);
 $sprivacy = htmlspecialchars($sprivacy, ENT_QUOTES);
 //initialize response to frontend.
 $response = array();
+
+//get token
+$token = $_POST["token"];
+//verify the token
+require("../../entity/JWT.php");
+$object_JWT = new JWT();
+if (!$object_JWT->token_verify($token, $semail)){
+    header('HTTP/1.0 401 Unauthorized');
+    die ("Your token is not matched with your username");
+}
 
 //update personal information to backend database.
 $sql_update_personal_info = "update student set sgpa = ?, sphone = ?, suniversity = ?, 
