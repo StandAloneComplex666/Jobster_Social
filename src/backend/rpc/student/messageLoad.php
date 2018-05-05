@@ -12,7 +12,7 @@ $object_message_info = new message();
 //the parameters that used for connecting to database.
 $servername = "localhost";
 $dbusername = "root";
-$password = "";
+$password = "root";
 $dbname = "jobster";
 
 //create new connection and check if it is connected successfully.
@@ -24,9 +24,22 @@ if ($conn->connect_error) {
 //get parameters from frontend.
 $semail = $_POST['semail'];
 $semailreceive = $_POST['semailreceive'];
+
 //prevent xss attack.
 $semail = htmlspecialchars($semail, ENT_QUOTES);
 $semailreceive = htmlspecialchars($semailreceive, ENT_QUOTES);
+
+//get token
+$token = $_POST["token"];
+//verify the token
+require("../../entity/JWT.php");
+$object_JWT = new JWT();
+if (!$object_JWT->token_verify($token, $semail)){
+    header('HTTP/1.0 401 Unauthorized');
+    die ("Your token is not matched with your username");
+}
+
+
 //initialize response
 $response = array();
 
