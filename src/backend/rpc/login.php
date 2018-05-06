@@ -4,11 +4,11 @@ require("../entity/JWT.php");
 $object_JWT = new JWT();
 //function used for create token.
 function token_create($username){
-    $key = "ZhangshuaiReallyhandsome";
+//    $key = "123456";
     $object_JWT = new JWT();
     $token = array();
     $token['id'] = $username;
-    $object_token = $object_JWT->encode($token, $key);
+    $object_token = $object_JWT->encode($token);
     return $object_token;
 }
 //the parameters that used for connecting to database.
@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 //initialize response to frontend.
-$response = array();
+//$response = array();
 
 //login page,check if the username and keywords are valid.
 $username = $_POST['username'];
@@ -85,5 +85,5 @@ if ($result_check_user_name_exist->num_rows > 0) {
     die("The username has not been registered.");
 }
 
-echo json_encode($response);
+echo $response;
 ?>
