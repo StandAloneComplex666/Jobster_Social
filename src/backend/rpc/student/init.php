@@ -1,7 +1,7 @@
 <?php
 //get parameters from frontend
 //$semail = "cz1522@nyu.edu";
- $semail = $_POST['semail'];
+$semail = $_POST['semail'];
 
  //prevent xss attack
 $semail = htmlspecialchars($semail, ENT_QUOTES);
@@ -25,7 +25,6 @@ if ($conn->connect_error) {
     die(json_encode(array('message' => "Connection failed: " . $conn->connect_error)));
 }
 
-//get token
 $token = $_POST["token"];
 //verify the token
 require("../../entity/JWT.php");
@@ -80,8 +79,10 @@ else{
 $temp_array = array();
 $sql_pending_friend_request = "select * from student where semail in 
 (select semailsend from studentfriends where semailreceive = ? and status = 'unviewed');";
-$pending_friend_request = $conn->prepare($sql_notification_unviewed);
-$pending_friend_request->bind_param('s', $seamil);
+$sql_pending_friend_request = "select * from student where semail in 
+(select semailsend from studentfriends where semailreceive = '$semail' and status = 'unviewed');";
+$pending_friend_request = $conn->prepare($sql_pending_friend_request);
+$pending_friend_request->bind_param('s', $semail);
 $pending_friend_request->execute();
 $result_pending_friend_request = $pending_friend_request->get_result();
 if ($result_pending_friend_request->num_rows > 0){
@@ -114,6 +115,8 @@ if ($result_friend_list->num_rows > 0){
 else{
     $response->friends = [];
 }
+
+$response->token = $token;
 
 //response to frontend.
 echo json_encode($response);
