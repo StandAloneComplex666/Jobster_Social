@@ -1,6 +1,6 @@
 .friend-list {
     width: 25%;
-    height: 360px;
+    height: 530px;
     overflow: scroll;
     background-color: white;
     padding: 5px 10px 0 15px;
@@ -27,4 +27,8 @@
     margin-bottom: 4px;
     font-size: 10px;
     line-height: 10px;
+}
+
+.friend-list .message-button {
+    float: right;
 }
